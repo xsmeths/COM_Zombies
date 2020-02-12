@@ -279,6 +279,52 @@ public class OnSignInteractEvent implements Listener {
 							CommandUtil.sendMessageToPlayer(player,
 									ChatColor.RED + "You dont have permission to use that kit!");
 						}
+					} else if (sign.getLine(1).equalsIgnoreCase(ChatColor.AQUA + "timed_teleporter")) {
+						if (plugin.manager.isPlayerInGame(player)) {
+							Game g = plugin.manager.getGame(player);
+							if (g.teleporterManager.getTeleporters().containsKey(sign.getLine(2))) {
+								if (!(g.isPowered())) {
+									CommandUtil.sendMessageToPlayer(player,
+											ChatColor.RED + "You must turn on the power first!");
+									PerkType.noPower(plugin, player);
+									return;
+								}
+								int points = Integer.parseInt(sign.getLine(3));
+								if (plugin.pointManager.canBuy(player, points)) {
+									ArrayList<Location> locList = g.teleporterManager.getTeleporters().get(sign.getLine(2));
+									Random r = new Random();
+									Location loc = locList.get(r.nextInt(locList.size()));
+									while (loc.equals(sign.getLocation())) {
+										loc = locList.get(r.nextInt(locList.size()));
+									}
+									player.teleport(loc);
+									player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 30, 30));
+									Particle eff = Particle.CRIT_MAGIC;
+
+									for (int i = 0; i < 50; i++) {
+										for (Player pl : Bukkit.getOnlinePlayers()) {
+											try {
+												player.spawnParticle(eff, player.getLocation(), (int) Math.random(), (Math.random()), (Math.random()), 1, 1);
+											} catch (Exception e) {
+												e.printStackTrace();
+											}
+										}
+									}
+
+									plugin.pointManager.takePoints(player, points);
+									plugin.pointManager.notifyPlayer(player);
+										getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> player.teleport(g.getPlayerSpawn()), plugin.config.tt_timer*20);
+								} else {
+									CommandUtil.sendMessageToPlayer(player,
+											ChatColor.RED + "You don't have enough points!");
+									return;
+								}
+
+							} else {
+								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "ERROR!");
+								return;
+							}
+						}
 					} else if (sign.getLine(1).equalsIgnoreCase(ChatColor.AQUA + "teleporter")) {
 						if (plugin.manager.isPlayerInGame(player)) {
 							Game g = plugin.manager.getGame(player);
@@ -313,18 +359,12 @@ public class OnSignInteractEvent implements Listener {
 
 									plugin.pointManager.takePoints(player, points);
 									plugin.pointManager.notifyPlayer(player);
-									if (plugin.getConfig().getBoolean("config.gameSettings.teleporternocamp") == true)
-									getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-										public void run() {
-											getServer().broadcastMessage("yes, it works");
-											player.teleport(g.getPlayerSpawn());
-										}
-									}, 600L);
 								} else {
 									CommandUtil.sendMessageToPlayer(player,
 											ChatColor.RED + "You don't have enough points!");
 									return;
 								}
+
 							} else {
 								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "ERROR!");
 								return;

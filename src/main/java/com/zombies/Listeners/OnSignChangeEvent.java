@@ -1,12 +1,5 @@
 package com.zombies.Listeners;
 
-import org.bukkit.ChatColor;
-import org.bukkit.block.Sign;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.SignChangeEvent;
-
 import com.zombies.COMZombies;
 import com.zombies.commands.CommandUtil;
 import com.zombies.config.CustomConfig;
@@ -14,6 +7,12 @@ import com.zombies.game.Game;
 import com.zombies.game.features.PerkType;
 import com.zombies.game.features.RandomBox;
 import com.zombies.kits.Kit;
+import org.bukkit.ChatColor;
+import org.bukkit.block.Sign;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.SignChangeEvent;
 
 public class OnSignChangeEvent implements Listener
 {
@@ -233,6 +232,40 @@ public class OnSignChangeEvent implements Listener
 					{
 						sign.setLine(0, ChatColor.RED + "[Zombies]");
 						sign.setLine(1, ChatColor.AQUA + "Teleporter");
+					}
+				}
+				else
+				{
+					sign.setLine(0, ChatColor.RED + "" + ChatColor.BOLD + "No such");
+					sign.setLine(1, ChatColor.RED + "" + ChatColor.BOLD + "teleporter!");
+					sign.setLine(2, "");
+					sign.setLine(3, "");
+					return;
+				}
+			}
+			else if (secondLine.equalsIgnoreCase("timed_teleporter") || secondLine.equalsIgnoreCase("tt"))
+			{
+				Game g = plugin.manager.getGame(sign.getBlock().getLocation());
+				if (g == null)
+				{
+					sign.setLine(0, ChatColor.RED + "" + ChatColor.BOLD + "Sign is");
+					sign.setLine(1, ChatColor.RED + "" + ChatColor.BOLD + "not in");
+					sign.setLine(2, ChatColor.RED + "" + ChatColor.BOLD + "an arena!");
+					sign.setLine(3, "");
+					return;
+				}
+				if (g.teleporterManager.getTeleporters().containsKey(thirdLine))
+				{
+					if(sign.getLine(3).equals(""))
+					{
+						sign.setLine(0, ChatColor.RED + "[Zombies]");
+						sign.setLine(1, ChatColor.AQUA + "timed_Teleporter");
+						sign.setLine(3, "500");
+					}
+					else
+					{
+						sign.setLine(0, ChatColor.RED + "[Zombies]");
+						sign.setLine(1, ChatColor.AQUA + "timed_Teleporter");
 					}
 				}
 				else

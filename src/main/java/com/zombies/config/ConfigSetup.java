@@ -1,11 +1,10 @@
 package com.zombies.config;
 
-import org.bukkit.Material;
-
 import com.zombies.COMZombies;
 import com.zombies.guns.GunType;
 import com.zombies.guns.GunTypeEnum;
 import com.zombies.leaderboards.PlayerStats;
+import org.bukkit.Material;
 
 public class ConfigSetup
 {
@@ -89,6 +88,8 @@ public class ConfigSetup
 	public int maxPerks;
 	
 	public int KillMoney;
+
+	public int tt_timer;
 	
 	//public int PistolMaterial;
 	
@@ -109,6 +110,7 @@ public class ConfigSetup
 	public void Setup()
 	{
 		CustomConfig conf = plugin.configManager.getConfig("GunConfig");
+		tt_timer = plugin.getConfig().getInt("config.gameSettings.TimedTeleporterTimer");
 		MultiBox = plugin.getConfig().getBoolean("config.gameSettings.MultipleMysteryBoxes");
 		doublePointsTimer = plugin.getConfig().getInt("config.gameSettings.doublePointsTimer");
 		instaKillTimer = plugin.getConfig().getInt("config.gameSettings.instaKillTimer");

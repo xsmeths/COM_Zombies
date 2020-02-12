@@ -42,7 +42,6 @@ com\zombies\Listeners\OnBlockChangeEvent.class
 com\zombies\commands\ReloadCommand.class
 com\zombies\spawning\SpawnManager$1.class
 com\zombies\game\managers\BoxManager.class
-com\zombies\Listeners\OnSignInteractEvent$1.class
 com\zombies\game\features\DownedPlayer.class
 com\zombies\commands\CommandUtil.class
 com\zombies\game\features\DownedPlayer$1.class

@@ -12,7 +12,7 @@ config:
     DoublePoints: true
     maxPerks: 4
   gameSettings:
-    teleporternocamp: true
+    TimedTeleporterTimer: 60
     #Range to allow knife attacks. (Values over 6 are set to 6, the vanilla value.)
     MeleeRange: 1.5
     #Have all or only one Mystery Box be spawned at a time
