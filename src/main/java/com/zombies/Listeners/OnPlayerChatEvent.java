@@ -1,5 +1,11 @@
 package com.zombies.Listeners;
 
+import com.zombies.COMZombies;
+import com.zombies.commands.CommandUtil;
+import com.zombies.game.Game;
+import com.zombies.game.Game.ArenaStatus;
+import com.zombies.game.features.Barrier;
+import com.zombies.game.features.Door;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -10,13 +16,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-
-import com.zombies.COMZombies;
-import com.zombies.commands.CommandUtil;
-import com.zombies.game.Game;
-import com.zombies.game.Game.ArenaStatus;
-import com.zombies.game.features.Barrier;
-import com.zombies.game.features.Door;
 
 public class OnPlayerChatEvent implements Listener
 {
@@ -171,6 +170,7 @@ public class OnPlayerChatEvent implements Listener
 				CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "Door setup complete!");
 				playerChat.setCancelled(true);
 				door.closeDoor();
+				door.loadAll();
 				plugin.isCreatingDoor.remove(player);
 			}
 		}

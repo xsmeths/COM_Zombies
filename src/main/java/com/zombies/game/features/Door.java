@@ -1,21 +1,15 @@
 package com.zombies.game.features;
 
-import java.util.ArrayList;
-import java.util.logging.Level;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.World;
-import org.bukkit.block.Block;
-import org.bukkit.block.Sign;
-
 import com.zombies.COMZombies;
 import com.zombies.config.CustomConfig;
 import com.zombies.game.Game;
 import com.zombies.spawning.SpawnPoint;
+import org.bukkit.*;
+import org.bukkit.block.Block;
+import org.bukkit.block.Sign;
+
+import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class Door
 {
@@ -305,7 +299,7 @@ public class Door
 			config.set(game.getName() + ".Doors.door" + doorNumber + ".Blocks.block" + (i + 1) + ".x", blocks.get(i).getLocation().getBlockX());
 			config.set(game.getName() + ".Doors.door" + doorNumber + ".Blocks.block" + (i + 1) + ".y", blocks.get(i).getLocation().getBlockY());
 			config.set(game.getName() + ".Doors.door" + doorNumber + ".Blocks.block" + (i + 1) + ".z", blocks.get(i).getLocation().getBlockZ());
-			config.set(game.getName() + ".Doors.door" + doorNumber + ".Blocks.block" + (i + 1) + ".ID", blocks.get(i).getType());
+			config.set(game.getName() + ".Doors.door" + doorNumber + ".Blocks.block" + (i + 1) + ".ID", blocks.get(i).getType().toString());
 			config.saveConfig();
 		}
 

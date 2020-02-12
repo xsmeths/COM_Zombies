@@ -6,7 +6,7 @@
 
     <groupId>com.zombies</groupId>
     <artifactId>COMZombies</artifactId>
-    <version>1.2.8.0.2</version>
+    <version>1.2.9</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

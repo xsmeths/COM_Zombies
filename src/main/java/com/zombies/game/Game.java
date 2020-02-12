@@ -448,6 +448,7 @@ public class Game {
 
 		for (Door door : doorManager.getDoors())
 			door.loadSpawns();
+		    doorManager.loadAllDoorsToGame();
 		try {
 			for (LivingEntity entity : getWorld().getLivingEntities()) {
 				if (arena.containsBlock(entity.getLocation())) {

@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class OnPlayerScopeEvent implements Listener
 {
@@ -38,8 +39,12 @@ public class OnPlayerScopeEvent implements Listener
 			{
 				if (player.isSneaking())
 				{
+					ItemStack helmet = new ItemStack(Material.CHAINMAIL_HELMET,1);
+					ItemMeta helmetmeta = helmet.getItemMeta();
+					helmetmeta.setUnbreakable(true);
+					helmet.setItemMeta(helmetmeta);
 					player.setWalkSpeed(0.2F);
-					player.getInventory().setHelmet(new ItemStack(Material.CHAINMAIL_HELMET, 1));
+					player.getInventory().setHelmet(new ItemStack(helmet));
 				}
 				else
 				{
@@ -62,8 +67,12 @@ public class OnPlayerScopeEvent implements Listener
 			}
 			else if ((player.getWalkSpeed() == 0.2F) || (player.getWalkSpeed() == 0.15F))
 			{
+				ItemStack helmet = new ItemStack(Material.CHAINMAIL_HELMET,1);
+				ItemMeta helmetmeta = helmet.getItemMeta();
+				helmetmeta.setUnbreakable(true);
+				helmet.setItemMeta(helmetmeta);
 				player.setWalkSpeed(-0.2F);
-				player.getInventory().setHelmet(new ItemStack(Material.END_PORTAL_FRAME, 1));
+				player.getInventory().setHelmet(new ItemStack(helmet));
 			}
 		}
 	}
