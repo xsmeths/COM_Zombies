@@ -321,7 +321,6 @@ public class SpawnManager {
 			}
 
 			private Player getNearestPlayer(Entity e) {
-				System.out.println("here 4");
 				Player closest = null;
 				for (Player player : SpawnManager.this.game.players) {
 					if (closest == null || player.getLocation().distance(e.getLocation()) < closest.getLocation()
@@ -329,7 +328,6 @@ public class SpawnManager {
 						closest = player;
 					}
 				}
-				System.out.println("here 5");
 				return closest;
 			}
 
@@ -369,8 +367,7 @@ public class SpawnManager {
 
 	private void oopsWeHadAnError() {
 		for (Player pl : game.players) {
-			pl.sendMessage(ChatColor.RED
-					+ "Well..  I guess we had an error trying to pick a spawn point out of the many we had! We'll have to end your game because of our lack of skillez.");
+			pl.sendMessage(ChatColor.RED  + "Well..  I guess we had an error trying to pick a spawn point out of the many we had! We'll have to end your game because of our lack of skillez.");
 		}
 		game.endGame();
 	}
