@@ -7,6 +7,7 @@ import com.zombies.game.Game;
 import com.zombies.game.features.Door;
 import com.zombies.game.features.PerkType;
 import com.zombies.game.features.RandomBox;
+import com.zombies.game.managers.TeleporterTimedHandler;
 import com.zombies.guns.Gun;
 import com.zombies.guns.GunManager;
 import com.zombies.guns.GunType;
@@ -290,8 +291,7 @@ public class OnSignInteractEvent implements Listener {
 								}
 								int points = Integer.parseInt(sign.getLine(3));
 								if (plugin.pointManager.canBuy(player, points)) {
-									ArrayList<Location> locList = g.teleporterManager.getTeleporters()
-											.get(sign.getLine(2));
+									ArrayList<Location> locList = g.teleporterManager.getTeleporters().get(sign.getLine(2));
 									Random r = new Random();
 									Location loc = locList.get(r.nextInt(locList.size()));
 									while (loc.equals(sign.getLocation())) {
@@ -313,6 +313,7 @@ public class OnSignInteractEvent implements Listener {
 
 									plugin.pointManager.takePoints(player, points);
 									plugin.pointManager.notifyPlayer(player);
+									TeleporterTimedHandler.addTimer(player);
 								} else {
 									CommandUtil.sendMessageToPlayer(player,
 											ChatColor.RED + "You don't have enough points!");
