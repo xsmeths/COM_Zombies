@@ -1,17 +1,16 @@
 package com.zombies.Listeners;
 
+import com.zombies.COMZombies;
+import com.zombies.game.Game;
+import com.zombies.guns.Gun;
+import com.zombies.guns.GunManager;
+import com.zombies.guns.GunTypeEnum;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
-
-import com.zombies.COMZombies;
-import com.zombies.game.Game;
-import com.zombies.guns.Gun;
-import com.zombies.guns.GunManager;
-import com.zombies.guns.GunTypeEnum;
 
 public class OnPlayerScopeEvent implements Listener
 {
@@ -64,7 +63,7 @@ public class OnPlayerScopeEvent implements Listener
 			else if ((player.getWalkSpeed() == 0.2F) || (player.getWalkSpeed() == 0.15F))
 			{
 				player.setWalkSpeed(-0.2F);
-				player.getInventory().setHelmet(new ItemStack(Material.CHAINMAIL_HELMET, 1));
+				player.getInventory().setHelmet(new ItemStack(Material.END_PORTAL_FRAME, 1));
 			}
 		}
 	}

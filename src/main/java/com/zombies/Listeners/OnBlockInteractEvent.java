@@ -1,5 +1,11 @@
 package com.zombies.Listeners;
 
+import com.zombies.COMZombies;
+import com.zombies.commands.CommandUtil;
+import com.zombies.game.Game;
+import com.zombies.game.features.Barrier;
+import com.zombies.game.features.Door;
+import com.zombies.spawning.SpawnPoint;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,13 +16,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-
-import com.zombies.COMZombies;
-import com.zombies.commands.CommandUtil;
-import com.zombies.game.Game;
-import com.zombies.game.features.Barrier;
-import com.zombies.game.features.Door;
-import com.zombies.spawning.SpawnPoint;
 
 public class OnBlockInteractEvent implements Listener
 {

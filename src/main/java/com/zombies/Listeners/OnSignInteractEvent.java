@@ -7,7 +7,6 @@ import com.zombies.game.Game;
 import com.zombies.game.features.Door;
 import com.zombies.game.features.PerkType;
 import com.zombies.game.features.RandomBox;
-import com.zombies.game.managers.TeleporterTimedHandler;
 import com.zombies.guns.Gun;
 import com.zombies.guns.GunManager;
 import com.zombies.guns.GunType;
@@ -24,6 +23,8 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import static org.bukkit.Bukkit.getServer;
 
 public class OnSignInteractEvent implements Listener {
 
@@ -270,8 +271,7 @@ public class OnSignInteractEvent implements Listener {
 						}
 					} else if (sign.getLine(1).equalsIgnoreCase(ChatColor.AQUA + "Kit")) {
 						Kit kit = plugin.kitManager.getKit(ChatColor.stripColor(sign.getLine(2)));
-						if (player.hasPermission("zombies.admin")
-								|| player.hasPermission("zombies.kit." + kit.getName())) {
+						if (player.hasPermission("zombies.admin") || player.hasPermission("zombies.kit." + kit.getName())) {
 							plugin.kitManager.addPlayersSelectedKit(player, kit);
 							CommandUtil.sendMessageToPlayer(player,
 									ChatColor.GREEN + " You have selected the " + kit.getName() + " Kit!");
@@ -313,7 +313,13 @@ public class OnSignInteractEvent implements Listener {
 
 									plugin.pointManager.takePoints(player, points);
 									plugin.pointManager.notifyPlayer(player);
-									TeleporterTimedHandler.addTimer(player);
+									if (plugin.getConfig().getBoolean("config.gameSettings.teleporternocamp") == true)
+									getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+										public void run() {
+											getServer().broadcastMessage("yes, it works");
+											player.teleport(g.getPlayerSpawn());
+										}
+									}, 600L);
 								} else {
 									CommandUtil.sendMessageToPlayer(player,
 											ChatColor.RED + "You don't have enough points!");
