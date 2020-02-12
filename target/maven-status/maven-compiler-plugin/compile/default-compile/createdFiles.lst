@@ -83,7 +83,6 @@ com\zombies\Listeners\OnZombiePerkDrop$3.class
 com\zombies\game\features\PerkType.class
 com\zombies\commands\EditCommand.class
 com\zombies\guns\Gun$1.class
-com\zombies\particleutilities\ReflectionUtilities.class
 com\zombies\config\ConfigManager.class
 com\zombies\game\features\Door$1.class
 com\zombies\Listeners\OnEntitySpawnEvent.class
@@ -109,7 +108,6 @@ com\zombies\Listeners\OnGunEvent$1.class
 com\zombies\game\managers\BarrierManager.class
 com\zombies\Listeners\OnPlayerGetEXPEvent.class
 com\zombies\commands\LeaderboardsCommand.class
-com\zombies\particleutilities\ParticleEffects.class
 com\zombies\commands\AddBarrier.class
 com\zombies\Listeners\OnPlayerLeaveEvent.class
 com\zombies\spawning\SpawnManager$3.class

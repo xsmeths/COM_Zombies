@@ -1,15 +1,12 @@
 package com.zombies.Listeners;
 
-import org.bukkit.Bukkit;
-import org.bukkit.EntityEffect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
-import org.bukkit.entity.Zombie;
+import com.zombies.COMZombies;
+import com.zombies.game.Game;
+import com.zombies.game.Game.ArenaStatus;
+import com.zombies.guns.Gun;
+import com.zombies.guns.GunManager;
+import org.bukkit.*;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -17,13 +14,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.projectiles.ProjectileSource;
-
-import com.zombies.COMZombies;
-import com.zombies.game.Game;
-import com.zombies.game.Game.ArenaStatus;
-import com.zombies.guns.Gun;
-import com.zombies.guns.GunManager;
-import com.zombies.particleutilities.ParticleEffects;
 
 public class OnGunEvent implements Listener {
 
@@ -106,12 +96,12 @@ public class OnGunEvent implements Listener {
 								Zombie zomb = (Zombie) event.getEntity();
 								Double totalHealth;
 								if (gun.getType().name.equalsIgnoreCase("Zombie BFF")) {
-									ParticleEffects eff = ParticleEffects.HEART;
+									Particle eff = Particle.HEART;
 									for (int i = 0; i < 30; i++) {
 										float x = (float) (Math.random());
 										float y = (float) (Math.random());
 										float z = (float) (Math.random());
-										eff.sendToPlayer(player, zomb.getLocation(), x, y, z, 1, 1);
+										player.spawnParticle(eff, zomb.getLocation(), (int) x, y, z, 1, 1);
 									}
 								}
 								for (Player pl : game.players) {

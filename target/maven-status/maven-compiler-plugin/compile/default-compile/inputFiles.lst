@@ -36,7 +36,6 @@ C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\commands\InfoCom
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\Listeners\OnEntityCombustEvent.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\commands\PerksCommand.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\game\features\Door.java
-C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\particleutilities\ReflectionUtilities.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\commands\AddTeleporterCommand.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\commands\GunListCommand.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\game\features\DownedPlayer.java
@@ -80,7 +79,6 @@ C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\game\ArenaAntiBr
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\Listeners\OnBlockInteractEvent.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\game\managers\TeleporterManager.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\Listeners\OnPlayerLeaveEvent.java
-C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\particleutilities\ParticleEffects.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\commands\EndCommand.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\Listeners\OnInventoryChangeEvent.java
 C:\Users\smeths\IdeaProjects\comzfree\src\main\java\com\zombies\commands\EnableCommand.java

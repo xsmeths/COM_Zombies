@@ -1,6 +1,10 @@
 package com.zombies.Listeners;
 
+import com.zombies.COMZombies;
+import com.zombies.game.Game;
+import com.zombies.game.features.PerkType;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -11,11 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerMoveEvent;
-
-import com.zombies.COMZombies;
-import com.zombies.game.Game;
-import com.zombies.game.features.PerkType;
-import com.zombies.particleutilities.ParticleEffects;
 
 public class OnPlayerVelocityEvent implements Listener
 {
@@ -47,17 +46,17 @@ public class OnPlayerVelocityEvent implements Listener
 					double pHealth = player.getHealth();
 					Location loc = player.getLocation();
 					loc.getWorld().playSound(loc, Sound.ENTITY_GENERIC_EXPLODE, 1, 1);
-					ParticleEffects eff = ParticleEffects.LAVA;
-					ParticleEffects eff1 = ParticleEffects.FIREWORKS_SPARK;
+					Particle eff = Particle.LAVA;
+					Particle eff1 = Particle.FIREWORKS_SPARK;
 					for(int i = 0; i < 30; i++)
 					{
-						for(Player pl : game.players)
+						for(Player p1 : game.players)
 						{
 							float x = (float) (Math.random() * 2);
 							float y = (float) (Math.random() * 2);
 							float z = (float) (Math.random() * 2);
-							eff.sendToPlayer(pl, player.getLocation(), x, y, z, 1, 1);
-							eff1.sendToPlayer(pl, player.getLocation(), x, y, z, 1, 1);
+							player.spawnParticle(eff, player.getLocation(), (int) x, y, z, 1, 1);
+							player.spawnParticle(eff1, player.getLocation(), (int)x, y, z, 1, 1);
 						}
 					}
 					for(Entity e : player.getNearbyEntities(5, 5, 5))

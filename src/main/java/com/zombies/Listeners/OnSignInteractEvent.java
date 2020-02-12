@@ -11,11 +11,7 @@ import com.zombies.guns.Gun;
 import com.zombies.guns.GunManager;
 import com.zombies.guns.GunType;
 import com.zombies.kits.Kit;
-import com.zombies.particleutilities.ParticleEffects;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -303,13 +299,12 @@ public class OnSignInteractEvent implements Listener {
 									}
 									player.teleport(loc);
 									player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 30, 30));
-									ParticleEffects eff = ParticleEffects.MOB_SPELL;
+									Particle eff = Particle.CRIT_MAGIC;
 
 									for (int i = 0; i < 50; i++) {
 										for (Player pl : Bukkit.getOnlinePlayers()) {
 											try {
-												eff.sendToPlayer(pl, player.getLocation(), (float) (Math.random()),
-														(float) (Math.random()), (float) (Math.random()), 1, 1);
+												player.spawnParticle(eff, player.getLocation(), (int) Math.random(), (Math.random()), (Math.random()), 1, 1);
 											} catch (Exception e) {
 												e.printStackTrace();
 											}
