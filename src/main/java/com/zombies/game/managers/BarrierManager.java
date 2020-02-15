@@ -1,18 +1,17 @@
 package com.zombies.game.managers;
 
-import java.util.ArrayList;
-
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-
 import com.zombies.COMZombies;
 import com.zombies.config.CustomConfig;
 import com.zombies.game.Game;
 import com.zombies.game.Game.ArenaStatus;
 import com.zombies.game.features.Barrier;
 import com.zombies.spawning.SpawnPoint;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
 
 public class BarrierManager
 {
@@ -122,8 +121,7 @@ public class BarrierManager
 			barriers.remove(barrier);
 		}
 	}
-	
-	@SuppressWarnings("deprecation")
+
 	public void addBarrier(Barrier barrier)
 	{
 		CustomConfig conf = plugin.configManager.getConfig("ArenaConfig");
@@ -158,8 +156,7 @@ public class BarrierManager
 			}
 		}
 	}
-	
-	@SuppressWarnings("deprecation")
+
 	public void UpdateBarrier(Barrier barrier)
 	{
 		CustomConfig conf = plugin.configManager.getConfig("ArenaConfig");

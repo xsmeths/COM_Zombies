@@ -1,14 +1,13 @@
 package com.zombies.game.managers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import com.zombies.COMZombies;
+import com.zombies.game.features.PerkType;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import com.zombies.COMZombies;
-import com.zombies.game.features.PerkType;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PerkManager
 {	
@@ -74,17 +73,79 @@ public class PerkManager
 	
 	public int getAvaliblePerkSlot(Player player)
 	{
-		if (player.getInventory().getItem(4) == null)
+		if (player.getInventory().getItem(9) == null)
 		{
-			return 4;
+			return 9;
 		}
-		else if (player.getInventory().getItem(5) == null)
+		else if (player.getInventory().getItem(10) == null)
 		{
-			return 5;
+			return 10;
 		}
-		else if (player.getInventory().getItem(6) == null) { return 6; }
-		if (player.getInventory().getItem(7) == null) { return 7; }
-		return 4;
+		else if (player.getInventory().getItem(11) == null)
+		{
+			return 11;
+		}
+		else if (player.getInventory().getItem(12) == null)
+		{
+			return 12;
+		}
+		else if (player.getInventory().getItem(13) == null)
+		{
+			return 13;
+		}
+		else if (player.getInventory().getItem(14) == null)
+		{
+			return 14;
+		}
+		else if (player.getInventory().getItem(15) == null)
+		{
+			return 15;
+		}
+		else if (player.getInventory().getItem(16) == null)
+		{
+			return 16;
+		}
+		else if (player.getInventory().getItem(17) == null)
+		{
+			return 17;
+		}
+		else if (player.getInventory().getItem(18) == null)
+		{
+			return 18;
+		}
+		else if (player.getInventory().getItem(19) == null)
+		{
+			return 19;
+		}
+		else if (player.getInventory().getItem(20) == null)
+		{
+			return 20;
+		}
+		else if (player.getInventory().getItem(21) == null)
+		{
+			return 21;
+		}
+		else if (player.getInventory().getItem(22) == null)
+		{
+			return 22;
+		}
+		else if (player.getInventory().getItem(23) == null)
+		{
+			return 23;
+		}
+		else if (player.getInventory().getItem(24) == null)
+		{
+			return 24;
+		}
+		else if (player.getInventory().getItem(25) == null)
+		{
+			return 25;
+		}
+		if (player.getInventory().getItem(26) == null)
+		{
+			return 26;
+		}
+		return 9;
 	}
 	
 	public void clearPerks()

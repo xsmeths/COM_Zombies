@@ -1,14 +1,13 @@
 package com.zombies.commands;
 
+import com.zombies.COMZombies;
+import com.zombies.game.Game;
+import com.zombies.spawning.SpawnPoint;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import com.zombies.COMZombies;
-import com.zombies.game.Game;
-import com.zombies.spawning.SpawnPoint;
 
 public class AddBarrier implements SubCommand
 {
@@ -45,7 +44,7 @@ public class AddBarrier implements SubCommand
 					{
 						player.getInventory().addItem(new ItemStack(Material.WOODEN_SWORD));
 					}
-					CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "---------------" + ChatColor.DARK_RED + "Door Setup" + ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "---------------");
+					CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "---------------" + ChatColor.DARK_RED + "Barrier Setup" + ChatColor.RED + "" + ChatColor.BOLD + "" + ChatColor.STRIKETHROUGH + "---------------");
 					CommandUtil.sendMessageToPlayer(player, ChatColor.GOLD + "Select a block to be the barrier using the wooden sword.");
 					CommandUtil.sendMessageToPlayer(player, ChatColor.GOLD + "Once you have this complete, type done, go into the room the brarrier blocks to and click on any ender portal frame (spawn point) that is in there with the sword.");
 					CommandUtil.sendMessageToPlayer(player, ChatColor.GOLD + "Lastly! In chat, type a price for the each repairation stage of the barrier");
@@ -62,7 +61,7 @@ public class AddBarrier implements SubCommand
 		}
 		else
 		{
-			plugin.command.noPerms(player, "add a door");
+			plugin.command.noPerms(player, "add a barrier");
 			return true;
 		}
 	}	

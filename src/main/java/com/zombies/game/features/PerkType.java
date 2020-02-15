@@ -1,16 +1,10 @@
 package com.zombies.game.features;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.World;
+import com.zombies.COMZombies;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import com.zombies.COMZombies;
 
 public enum PerkType
 {
@@ -28,7 +22,6 @@ public enum PerkType
 		return null;
 	}
 
-	@SuppressWarnings("deprecation")
 	public void initialEffect(COMZombies plugin, final Player player, PerkType type, int slot)
 	{
 		final World world = player.getLocation().getWorld();

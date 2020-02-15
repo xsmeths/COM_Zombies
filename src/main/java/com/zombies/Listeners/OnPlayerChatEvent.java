@@ -15,10 +15,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChatEvent;
 
-public class OnPlayerChatEvent implements Listener
-{
+public class OnPlayerChatEvent implements Listener {
 
 	private COMZombies plugin;
 
@@ -28,7 +27,7 @@ public class OnPlayerChatEvent implements Listener
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onPlayerChat(AsyncPlayerChatEvent playerChat)
+	public void onPlayerChat(PlayerChatEvent playerChat)
 	{
 		Player player = playerChat.getPlayer();
 		String message = playerChat.getMessage().replaceFirst(" ", "");
@@ -168,10 +167,9 @@ public class OnPlayerChatEvent implements Listener
 				}
 				door.setPrice(price);
 				CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "Door setup complete!");
-				playerChat.setCancelled(true);
-				door.closeDoor();
-				door.loadAll();
 				plugin.isCreatingDoor.remove(player);
+				playerChat.setCancelled(true);
+				door.loadAll();
 			}
 		}
 		if (plugin.isArenaSetup.containsKey(player))

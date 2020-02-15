@@ -91,7 +91,7 @@ public class Door
 		world.playSound(loc, Sound.BLOCK_WOODEN_DOOR_OPEN, 1L, 1L);
 	}
 
-	private void loadSigns()
+	public void loadSigns()
 	{
 		CustomConfig config = plugin.configManager.getConfig("ArenaConfig");
 		String location = game.getName() + ".Doors.door" + doorNumber;
@@ -268,7 +268,6 @@ public class Door
 	 *            - Point two for the block locations
 	 */
 
-	@SuppressWarnings("deprecation")
 	public void saveBlocks(Location p1, Location p2)
 	{
 		CustomConfig config = plugin.configManager.getConfig("ArenaConfig");

@@ -34,7 +34,6 @@ public class OnSignInteractEvent implements Listener {
 		plugin = zombies;
 	}
 
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void RightClickSign(PlayerInteractEvent event) {
 		if (event.getClickedBlock() == null)
@@ -44,8 +43,7 @@ public class OnSignInteractEvent implements Listener {
 			if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getPlayer().isSneaking()) {
 				Player player = event.getPlayer();
 				String Line1 = ChatColor.stripColor(sign.getLine(0));
-				if (!plugin.isEditingASign.containsKey(player) && Line1.equalsIgnoreCase("[Zombies]")
-						&& !plugin.manager.isPlayerInGame(player)) {
+				if (!plugin.isEditingASign.containsKey(player) && Line1.equalsIgnoreCase("[Zombies]") && !plugin.manager.isPlayerInGame(player)) {
 					plugin.isEditingASign.put(player, sign);
 					CommandUtil.sendMessageToPlayer(player, "You are now editing a sign!");
 					return;
@@ -63,15 +61,13 @@ public class OnSignInteractEvent implements Listener {
 							String[] args = new String[2];
 							args[0] = "join";
 							args[1] = game.getName();
-							player.getLocation().getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_AMBIENT,
-									1, 1);
+							player.getLocation().getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_AMBIENT, 1, 1);
 							plugin.command.onRemoteCommand(player, args);
 							game.signManager.updateGame();
 							return;
 						} else {
 							CommandUtil.sendMessageToPlayer(player,
-									ChatColor.DARK_RED + "There is no arena called " + ChatColor.GOLD + sign.getLine(2)
-											+ ChatColor.DARK_RED + "! Contact an admin to fix this issue!");
+									ChatColor.DARK_RED + "There is no arena called " + ChatColor.GOLD + sign.getLine(2) + ChatColor.DARK_RED + "! Contact an admin to fix this issue!");
 							return;
 						}
 					} else if (sign.getLine(1).equalsIgnoreCase(ChatColor.AQUA + "Spectate")) {
@@ -94,8 +90,7 @@ public class OnSignInteractEvent implements Listener {
 							RandomBox box = game.boxManager.getBox(sign.getLocation());
 							if (box != null) {
 								box.Start(player, points);
-								player.getLocation().getWorld().playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN,
-										1, 1);
+								player.getLocation().getWorld().playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1, 1);
 							}
 							return;
 						} else {
@@ -108,15 +103,13 @@ public class OnSignInteractEvent implements Listener {
 						perk = perk.getPerkType(perkName);
 						if (game.containsPower()) {
 							if (!game.isPowered()) {
-								CommandUtil.sendMessageToPlayer(player,
-										ChatColor.RED + "You must turn on the power first!");
+								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "You must turn on the power first!");
 								PerkType.noPower(plugin, player);
 								return;
 							}
 						}
 						if (perk == null) {
-							CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD
-									+ "An error occured when trying to buy this perk! Leave the game and contact an admin please.");
+							CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD + "An error occured when trying to buy this perk! Leave the game and contact an admin please.");
 							return;
 						} else {
 							int playerPoints = plugin.pointManager.getPlayersPoints(player);
@@ -127,15 +120,13 @@ public class OnSignInteractEvent implements Listener {
 								cost = 2000;
 							}
 							if (playerPoints >= cost) {
-								if (game.perkManager.getPlayersPerks().size() > 4) {
-									CommandUtil.sendMessageToPlayer(player,
-											ChatColor.RED + "" + ChatColor.BOLD + "You already have four perks!");
+								if (game.perkManager.getPlayersPerks().size() > plugin.config.maxPerks) {
+									CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD + "You already have" + plugin.config.maxPerks + "perks!");
 									return;
 								}
 								try {
 									if (game.perkManager.getPlayersPerks().get(player).contains(perk)) {
-										CommandUtil.sendMessageToPlayer(player,
-												ChatColor.RED + "" + ChatColor.BOLD + "You already have " + perk + "!");
+										CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD + "You already have " + perk + "!");
 										return;
 									}
 								} catch (NullPointerException e) {
@@ -143,21 +134,17 @@ public class OnSignInteractEvent implements Listener {
 								if (!game.perkManager.addPerk(player, perk)) {
 									return;
 								}
-								plugin.getServer().getPluginManager()
-										.callEvent(new PlayerPerkPurchaseEvent(player, perk));
-								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD
-										+ "You now have " + perk.toString().toLowerCase() + "!");
+								plugin.getServer().getPluginManager().callEvent(new PlayerPerkPurchaseEvent(player, perk));
+								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD + "You now have " + perk.toString().toLowerCase() + "!");
 								int slot = game.perkManager.getAvaliblePerkSlot(player);
 								perk.initialEffect(plugin, player, perk, slot);
 								if (perk.equals(PerkType.STAMIN_UP)) {
-									player.addPotionEffect(
-											new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1));
+									player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 1));
 								}
 								plugin.pointManager.takePoints(player, cost);
 								plugin.pointManager.notifyPlayer(player);
 							} else {
-								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD
-										+ "You do not have enough points to buy this!");
+								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "" + ChatColor.BOLD + "You do not have enough points to buy this!");
 								return;
 							}
 						}
@@ -313,7 +300,7 @@ public class OnSignInteractEvent implements Listener {
 
 									plugin.pointManager.takePoints(player, points);
 									plugin.pointManager.notifyPlayer(player);
-										getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> player.teleport(g.getPlayerSpawn()), plugin.config.tt_timer*20);
+									getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> player.teleport(g.getPlayerSpawn()), plugin.config.tt_timer*20);
 								} else {
 									CommandUtil.sendMessageToPlayer(player,
 											ChatColor.RED + "You don't have enough points!");

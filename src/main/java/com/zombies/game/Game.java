@@ -660,7 +660,6 @@ public class Game {
 		signManager.updateGame();
 	}
 
-	@SuppressWarnings("deprecation")
 	private void resetPlayer(Player player) {
 		try {
 			for (PotionEffectType t : PotionEffectType.values()) {
@@ -1152,27 +1151,29 @@ public class Game {
 		case 30:
 			data.setDisplayName("Gun Slot 3");
 			lore.add("Holds 1 Gun");
-			lore.add("Requires MuleKick to work!");
+			lore.add("Requires MuleKick!");
 			break;
 		case 31:
-			data.setDisplayName("Perk Slot 1");
-			lore.add("Holds 1 Perk");
+			data.setDisplayName("Gun Slot 4");
+			lore.add("Holds 1 Gun");
+			lore.add("Requires MuleKick PRO!");
 			break;
 		case 32:
-			data.setDisplayName("Perk Slot 2");
-			lore.add("Holds 1 Perk");
+			data.setDisplayName("SpecialAtaack Slot");
+			lore.add("Contains your current special");
+			lore.add("such as grenade launcher");
 			break;
 		case 33:
-			data.setDisplayName("Perk Slot 3");
-			lore.add("Holds 1 Perk");
+			data.setDisplayName("Equipment slot");
+			lore.add("Holds equipment like claymores");
 			break;
 		case 34:
-			data.setDisplayName("Perk Slot 4");
-			lore.add("Holds 1 Perk");
+			data.setDisplayName("Special Grenade Slot");
+			lore.add("Holds Special Grenade");
 			break;
 		case 35:
 			data.setDisplayName("Grenade Slot");
-			lore.add("");
+			lore.add("Boom Boom!!");
 			break;
 		}
 		data.setLore(lore);
@@ -1213,10 +1214,6 @@ public class Game {
 		player.getInventory().setItem(28, setItemMeta(28, ib));
 		player.getInventory().setItem(29, setItemMeta(29, ib));
 		player.getInventory().setItem(30, setItemMeta(30, ib));
-		player.getInventory().setItem(31, setItemMeta(31, ib));
-		player.getInventory().setItem(32, setItemMeta(32, ib));
-		player.getInventory().setItem(33, setItemMeta(33, ib));
-		player.getInventory().setItem(34, setItemMeta(34, ib));
 		player.getInventory().setItem(35, setItemMeta(35, ib));
 		player.updateInventory();
 	}
