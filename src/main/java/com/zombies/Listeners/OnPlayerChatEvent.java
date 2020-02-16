@@ -156,7 +156,7 @@ public class OnPlayerChatEvent implements Listener {
 			}
 			else if (door.arePointsFinal() && door.areSpawnPointsFinal() && door.areSignsFinal())
 			{
-				int price = 0;
+				int price;
 				try
 				{
 					price = Integer.parseInt(message);
@@ -169,7 +169,7 @@ public class OnPlayerChatEvent implements Listener {
 				CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "Door setup complete!");
 				plugin.isCreatingDoor.remove(player);
 				playerChat.setCancelled(true);
-				door.loadAll();
+				door.closeDoor();
 			}
 		}
 		if (plugin.isArenaSetup.containsKey(player))
