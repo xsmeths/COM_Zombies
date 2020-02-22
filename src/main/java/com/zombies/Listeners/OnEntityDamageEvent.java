@@ -106,19 +106,17 @@ public class OnEntityDamageEvent implements Listener
 				if(e.getDamager() instanceof Player)
 				{
 					Player player = (Player) e.getDamager();
-					if(player.getInventory().getItemInMainHand().getType().equals(Material.IRON_SWORD))
+					if(player.getInventory().getItemInMainHand().getType().equals(Material.STONE_SWORD))
 					{
 						if(game.players.contains(player))
 						{
-							player.getInventory().getItemInOffHand().setDurability(player.getInventory().getItemInMainHand().getType().getMaxDurability());
-							player.updateInventory();
 							Zombie zombie1 = (Zombie) entity;
 							double damageAmount = e.getDamage();
 							Double totalHealth;
 
 							if(plugin.config.meleeRange == plugin.config.meleeRange)
 							{
-								damageAmount = 5;
+								damageAmount = 2.5;
 							}
 							else
 							{

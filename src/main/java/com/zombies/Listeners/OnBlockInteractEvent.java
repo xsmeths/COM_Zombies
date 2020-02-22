@@ -19,7 +19,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class OnBlockInteractEvent implements Listener
 {
-	
 	private COMZombies plugin;
 	
 	public OnBlockInteractEvent(COMZombies pl)
@@ -134,7 +133,6 @@ public class OnBlockInteractEvent implements Listener
 			}
 		}
 	}
-	
 	@EventHandler
 	public void grenadeUse(PlayerInteractEvent event)
 	{

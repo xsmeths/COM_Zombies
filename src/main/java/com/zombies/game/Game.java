@@ -1198,7 +1198,7 @@ public class Game {
 		ItemMeta bootsmeta = boots.getItemMeta();
 		bootsmeta.setUnbreakable(true);
 		boots.setItemMeta(bootsmeta);
-		ItemStack knife = new ItemStack(Material.IRON_SWORD, 1);
+		ItemStack knife = new ItemStack(Material.STONE_SWORD, 1);
 		ItemMeta kMeta = knife.getItemMeta();
 		kMeta.setUnbreakable(true);
 		kMeta.setDisplayName(ChatColor.RED + "Knife");

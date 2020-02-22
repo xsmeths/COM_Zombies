@@ -1,19 +1,15 @@
 package com.zombies.game.features;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.block.Sign;
-import org.bukkit.entity.Player;
-
 import com.zombies.COMZombies;
 import com.zombies.commands.CommandUtil;
 import com.zombies.game.Game;
 import com.zombies.guns.Gun;
 import com.zombies.guns.GunManager;
 import com.zombies.guns.GunType;
+import org.bukkit.*;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.Sign;
+import org.bukkit.entity.Player;
 
 public class RandomBox
 {
@@ -22,6 +18,7 @@ public class RandomBox
 	private Game boxGame;
 	private String boxNum;
 	private int boxCost;
+	private BlockFace face;
 	
 	public RandomBox(Location loc, Game game, COMZombies plugin, String key, int cost)
 	{
@@ -30,6 +27,7 @@ public class RandomBox
 		boxGame = game;
 		boxNum = key;
 		boxCost = cost;
+		this.face = face;
 	}
 	
 	public void Start(final Player player, int PointsNeeded)
@@ -95,7 +93,8 @@ public class RandomBox
 			Bukkit.getServer().broadcastMessage("Mysterybox " + this.getName() + "Is broken and has no location!! what did you do!!");
 			return;
 		}
-		boxLoc.getBlock().setType(Material.WALL_SIGN);
+		Material boxsign = Material.WALL_SIGN;
+		boxLoc.getBlock().setType(boxsign);
 		Sign sign = (Sign) boxLoc.getBlock().getState();
 		sign.setLine(0, ChatColor.RED + "[Zombies]");
 		sign.setLine(1, ChatColor.AQUA + "MysteryBox");

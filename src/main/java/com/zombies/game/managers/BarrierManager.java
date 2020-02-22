@@ -24,8 +24,7 @@ public class BarrierManager
 		this.plugin = plugin;
 		this.game = game;
 	}
-	
-	@SuppressWarnings("deprecation")
+
 	public void loadAllBarriersToGame()
 	{
 		CustomConfig conf = plugin.configManager.getConfig("ArenaConfig");

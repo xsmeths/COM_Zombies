@@ -301,7 +301,6 @@ public class OnSignInteractEvent implements Listener {
 									plugin.pointManager.takePoints(player, points);
 									plugin.pointManager.notifyPlayer(player);
 									getServer().getScheduler().scheduleSyncDelayedTask(plugin, () -> player.teleport(g.getPlayerSpawn()), plugin.config.tt_timer*20);
-
 								} else {
 									CommandUtil.sendMessageToPlayer(player,
 											ChatColor.RED + "You don't have enough points!");

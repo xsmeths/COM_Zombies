@@ -5,20 +5,19 @@
 
 package com.zombies.game.managers;
 
-import java.util.ArrayList;
-import java.util.Random;
-
+import com.zombies.COMZombies;
+import com.zombies.config.CustomConfig;
+import com.zombies.game.Game;
+import com.zombies.game.Game.ArenaStatus;
+import com.zombies.game.features.RandomBox;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
-import com.zombies.COMZombies;
-import com.zombies.config.CustomConfig;
-import com.zombies.game.Game;
-import com.zombies.game.Game.ArenaStatus;
-import com.zombies.game.features.RandomBox;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class BoxManager
 {
@@ -43,12 +42,12 @@ public class BoxManager
 		numbers.clear();
 		try
 		{
-			for (String key : config.getConfigurationSection(game.getName() + ".MysteryBoxs").getKeys(false))
+			for (String key : config.getConfigurationSection(game.getName() + ".MysteryBoxes").getKeys(false))
 			{
-				double x = config.getDouble(game.getName() + ".MysteryBoxs." + key + ".x");
-				double y =config.getDouble(game.getName() + ".MysteryBoxs." + key + ".y");
-				double z = config.getDouble(game.getName() + ".MysteryBoxs." + key + ".z");
-				int cost = config.getInt(game.getName() + ".MysteryBoxs." + key + ".Cost");
+				double x = config.getDouble(game.getName() + ".MysteryBoxes." + key + ".x");
+				double y = config.getDouble(game.getName() + ".MysteryBoxes." + key + ".y");
+				double z = config.getDouble(game.getName() + ".MysteryBoxes." + key + ".z");
+				int cost = config.getInt(game.getName() + ".MysteryBoxes." + key + ".Cost");
 				Location loc = new Location(game.getWorld(), x, y, z);
 				RandomBox point = new RandomBox(loc, game, plugin, key, cost);
 				boxes.add(point);
@@ -94,7 +93,7 @@ public class BoxManager
 		if (boxes.contains(box))
 		{
 			Location loc = box.getLocation();
-			conf.set(game.getName() + ".MysteryBoxs." + box.getName(), null);
+			conf.set(game.getName() + ".MysteryBoxes." + box.getName(), null);
 			conf.saveConfig();
 			loadAllBoxesToGame();
 			player.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "MysteryBox removed!");
@@ -121,11 +120,11 @@ public class BoxManager
 			{
 				Location loc = box.getLocation();
 				String name = box.getName();
-				conf.set(game.getName() + ".MysteryBoxs." + name + ".x", loc.getBlockX());
-				conf.set(game.getName() + ".MysteryBoxs." + name + ".y", loc.getBlockY());
-				conf.set(game.getName() + ".MysteryBoxs." + name + ".z", loc.getBlockZ());
-				conf.set(game.getName() + ".MysteryBoxs." + name + ".Cost", box.getCost());
-				conf.set(game.getName() + ".MysteryBoxs." + name + ".Face", "");
+				conf.set(game.getName() + ".MysteryBoxes." + name + ".x", loc.getBlockX());
+				conf.set(game.getName() + ".MysteryBoxes." + name + ".y", loc.getBlockY());
+				conf.set(game.getName() + ".MysteryBoxes." + name + ".z", loc.getBlockZ());
+				conf.set(game.getName() + ".MysteryBoxes." + name + ".Cost", box.getCost());
+				conf.set(game.getName() + ".MysteryBoxes." + name + ".Face", "south");
 				conf.saveConfig();
 				boxes.add(box);
 				numbers.add(Integer.parseInt(box.getName().substring(3)));
