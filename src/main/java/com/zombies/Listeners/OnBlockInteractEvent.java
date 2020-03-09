@@ -50,8 +50,8 @@ public class OnBlockInteractEvent implements Listener
 							CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "Spawn point selected!");
 							event.setCancelled(true);
 						}
-					} catch (NullPointerException e)
-					{
+					} catch (NullPointerException e) {
+						e.addSuppressed(e.getCause());
 					}
 				}
 				if (door.arePointsFinal() && door.areSpawnPointsFinal())
@@ -115,8 +115,8 @@ public class OnBlockInteractEvent implements Listener
 								CommandUtil.sendMessageToPlayer(player, ChatColor.RED + "Spawn point selected!");
 								event.setCancelled(true);
 							}
-						} catch (NullPointerException e)
-						{
+						} catch (NullPointerException e) {
+							e.addSuppressed(e.getCause());
 						}
 					} 
 				}

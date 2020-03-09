@@ -1,12 +1,11 @@
 package com.zombies.kits;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.bukkit.entity.Player;
-
 import com.zombies.COMZombies;
 import com.zombies.game.Game;
+import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class KitManager
 {
@@ -21,6 +20,7 @@ public class KitManager
 
 	public void newKit(String name)
 	{
+		loadKits();
 		plugin.getClass();
 	}
 
@@ -28,6 +28,7 @@ public class KitManager
 	{
 		for(Kit k: kits)
 		{
+			loadKits();
 			if(k.getName().equalsIgnoreCase(name))
 			{
 				return k;
@@ -50,6 +51,7 @@ public class KitManager
 	{
 		for(Player player: selectedKits.keySet())
 		{
+			loadKits();
 			selectedKits.get(player).GivePlayerStartingItems(player);
 		}
 	}

@@ -45,6 +45,7 @@ public class Kit {
 					gunOne = gun;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
+				e.addSuppressed(e.getCause());
 			}
 
 			try {
@@ -56,6 +57,7 @@ public class Kit {
 					gunTwo = gun;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
+				e.addSuppressed(e.getCause());
 			}
 
 			try {
@@ -67,6 +69,7 @@ public class Kit {
 					gunThree = gun;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
+				e.addSuppressed(e.getCause());
 			}
 		}
 
@@ -84,6 +87,7 @@ public class Kit {
 					perkOne = perk;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
+				e.addSuppressed(e.getCause());
 			}
 
 			try {
@@ -97,6 +101,7 @@ public class Kit {
 					perkTwo = perk;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
+				e.addSuppressed(e.getCause());
 			}
 
 			try {
@@ -110,6 +115,7 @@ public class Kit {
 					perkThree = perk;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
+				e.addSuppressed(e.getCause());
 			}
 
 			try {
@@ -122,13 +128,13 @@ public class Kit {
 					perkFour = perk;
 				}
 			} catch (ArrayIndexOutOfBoundsException e) {
+				e.addSuppressed(e.getCause());
 			}
 		}
 
 		points = config.getInt(name + ".Points");
 	}
 
-	@SuppressWarnings("deprecation")
 	public void GivePlayerStartingItems(Player player) {
 		if (!plugin.manager.isPlayerInGame(player) && !player.hasPermission("zombies.kit." + name))
 			return;
