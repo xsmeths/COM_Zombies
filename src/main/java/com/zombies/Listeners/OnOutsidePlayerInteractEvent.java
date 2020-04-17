@@ -1,19 +1,18 @@
 package com.zombies.Listeners;
 
-import java.util.ArrayList;
-
+import com.zombies.COMZombies;
+import com.zombies.game.Game;
+import com.zombies.game.Game.ArenaStatus;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.zombies.COMZombies;
-import com.zombies.game.Game;
-import com.zombies.game.Game.ArenaStatus;
+import java.util.ArrayList;
 
 public class OnOutsidePlayerInteractEvent implements Listener
 {
@@ -27,9 +26,10 @@ public class OnOutsidePlayerInteractEvent implements Listener
 	}
 
 	@EventHandler
-	public void onOusidePlayerItemPickUp(PlayerPickupItemEvent e)
+	public void onOusidePlayerItemPickUp(EntityPickupItemEvent e)
 	{
-		Player player = e.getPlayer();
+		if (e.getEntity() instanceof Player) return;
+		Player player = (Player)e.getEntity();
 		Game game = plugin.manager.getGame(player.getLocation());
 		if (game == null || game.mode == null) return;
 		if (!(game.mode.equals(ArenaStatus.INGAME))) { return; }
